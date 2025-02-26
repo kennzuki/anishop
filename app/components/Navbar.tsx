@@ -4,9 +4,9 @@ import React from 'react'
 export const Navbar = () => {
 const links=[
     {name:'home',path:'/'},
-    {name:'dashboard',path:'/dashboard'},
-    {name:'account',path:'/accounts'},
-    { name: 'contact', path: '/contact' },
+    {name:'dashboard',path:'app/dashboard'},
+    {name:'account',path:'app/accounts'},
+    { name: 'contact', path: 'app/contact' },
 ]
 
   return (
