@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Hero = () => {
   return (
-      <div className='bg-green-500 text-white p-12 flex justify-between gap-7'> 
+      <div className='bg-green-500 text-white p-12 flex justify-between gap-7 h-64'> 
           <section className="">
               <h2 className="text-3xl font-bold">Anisoft</h2>
               <p className="">Get your pets daycare sorted</p>
