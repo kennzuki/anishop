@@ -11,7 +11,7 @@ const links=[
 
   return (
     <div className='bg-gray-800 text-white text-center  capitalize text-xl flex justify-between gap-7 p-12'>
-          <h1 className="">Kenki Anisoft</h1>
+          <h1 className="font-bold text-4xl">Kenki Anisoft</h1>
           <nav className="flex justify-between gap-3">
               {links.map((link)=>(
                   <Link href={link.path} key={link.name}>{link.name}</Link>
