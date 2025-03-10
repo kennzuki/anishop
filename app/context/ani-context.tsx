@@ -10,6 +10,8 @@ type AniContextProviderProps = {
 type TAniContext = {
     ani: Animal[];
     selectedAni: string | null;
+    selectedAniId: Animal | undefined;
+    handleClickSelectedId: (id: string) => void;
 }
 
 export const AniContext = createContext < TAniContext | null >( null);
@@ -18,9 +20,18 @@ export default function AniContextProvider({data, children }:AniContextProviderP
     
 
     const [ani, setAni] = useState(data);
-    const[selectedAni, setSelectedAni] = useState(null);
+    const [selectedAni, setSelectedAni] = useState<string | null>(null);
+
+    //derived state
+    const selectedAniId=ani.find((ani)=>ani.id===selectedAni);
+    const handleClickSelectedId = (id: string) => { 
+        setSelectedAni(id);
+    }
+ 
+    
+    
     return (
-        <AniContext.Provider value={{ ani,  selectedAni }}>
+        <AniContext.Provider value={{ ani,  selectedAni,selectedAniId,handleClickSelectedId}}>
             {children}
         </AniContext.Provider>
     );

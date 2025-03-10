@@ -1,5 +1,10 @@
+'use client'
+
 import Image from 'next/image';
-export default async function Details() {
+import { useAniContext } from '../app/dashboard/hooks';
+export default function Details() {
+const {selectedAniId} = useAniContext();
+
   return (
     <div className=' p-12  space-y-8 '>
       <section className='flex gap-4 justify-between place-items-center p-4'>
@@ -7,7 +12,7 @@ export default async function Details() {
         <article className='flex gap-4 place-items-center'>
           <Image
             className='w-[65px] h-[65px] rounded-full bg-gray-400 p-4'
-            src=''
+            src={selectedAniId?.imageUrl}
             width={45}
             height={45}
             alt='image'
