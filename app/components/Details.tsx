@@ -28,17 +28,15 @@ const {selectedAniId} = useAniContext();
       {/* 2 */}
       <section className='flex gap-4 justify-between place-items-center p-8'>
         <p className='flex flex-col gap-3 uppercase text-3xl font-bold'>
-          Owner Name<span className='text-center text-xl font-medium capitalize'>Benjamin</span>
+          Owner Name<span className='text-center text-xl font-medium capitalize'>{selectedAniId?.ownerName}</span>
         </p>
         <p className='flex flex-col gap-3 uppercase text-3xl font-bold'>
-          Age<span className='text-center text-xl font-medium capitalize'>2</span>
+          Age<span className='text-center text-xl font-medium capitalize'>{selectedAniId?.age}</span>
         </p>
       </section>
       {/* 3 */}
       <section className=' text-xl'>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis magni
-        illum totam suscipit, aliquam mollitia nihil sit porro aliquid veniam.
-        Omnis, illo cum!
+      {selectedAniId?.notes}
       </section>
     </div>
   );
