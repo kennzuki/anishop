@@ -27,7 +27,7 @@ export default function AniContextProvider({data, children }:AniContextProviderP
     //derived state
     const selectedAniId = ani.find((ani) => ani.id === selectedAni);
     const numberOfAni = ani.length;
-    const handleClickSelectedId = (id: string) => { 
+    const handleClickSelectedId = (id:string) => { 
         setSelectedAni(id);
     }
  

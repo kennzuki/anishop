@@ -3,14 +3,15 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { useAniContext } from '../app/dashboard/hooks';
+import { useAniContext,useSearchContext } from '../app/dashboard/hooks';
 
 export default function Card() {
-  const { ani,handleClickSelectedId } = useAniContext();
-
+  const { ani, handleClickSelectedId } = useAniContext();
+  const{searchQuery}=useSearchContext();
+const filteredAnimals=ani.filter((ani)=>ani.name.toLowerCase().includes(searchQuery.toLowerCase()));
   return (
     <ul className='bg-white border border-gray-200 p-4 '>
-      {ani.map((ani) => (
+      {filteredAnimals.map((ani) => (
         <li
           key={ani.id}
           className='mb-4 border border-gray-200 rounded-xl shadow-md flex flex-col gap-4'
