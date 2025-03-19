@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import {useState} from 'react';
+import { useSearchContext } from '../app/dashboard/hooks';
 
 export const SearchInput = () => {
-
+  const { searchQuery, handleChangeSearchQuery } = useSearchContext();
   return (
     <>
       <section className='mb-4'>
@@ -12,7 +12,7 @@ export const SearchInput = () => {
           type='search'
           placeholder='Search...'
           value={searchQuery}
-          onChange={(e) =>setSearchQuery(e.target.value)}
+          onChange={(e) => handleChangeSearchQuery(e.target.value)}
         />
       </section>
     </>

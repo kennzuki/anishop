@@ -6,7 +6,7 @@ type SearchContextProviderProps = {
   children: React.ReactNode;
 };
 type TSearchContext = {
-  SearchQuery: string;
+  searchQuery: string;
   handleChangeSearchQuery: (newValue: string) => void;
 };
 
@@ -25,13 +25,13 @@ export default function SearchContextProvider({
   };
 
   return (
-    <AniContext.Provider
+    <SearchContext.Provider
       value={{
         searchQuery,
         handleChangeSearchQuery,
       }}
     >
       {children}
-    </AniContext.Provider>
+    </SearchContext.Provider>
   );
 }
