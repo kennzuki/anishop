@@ -10,7 +10,7 @@ type TSearchContext = {
   handleChangeSearchQuery: (newValue: string) => void;
 };
 
-export const AniContext = createContext<TSearchContext | null>(null);
+export const SearchContext = createContext<TSearchContext | null>(null);
 
 export default function SearchContextProvider({
   children,
