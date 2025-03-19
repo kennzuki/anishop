@@ -10,7 +10,7 @@ export const Hero = () => {
               <p className="">Get your pets daycare sorted</p>
           </section>
           <section className="flex flex-col gap-4">
-              <p className="font-semibold capitalize ">number of guests <span className="rounded-full p-4 font-bold text-2xl bg-gray-200 h-[45px] w-[45px] text-black text-center">{numberOfAni}</span></p>
+              <p className="font-semibold capitalize flex flex-col gap-2 items-center ">number of guests <span className="rounded-full p-2  font-bold text-2xl bg-gray-200 h-[45px] w-[45px] text-black text-center">{numberOfAni}</span></p>
           </section>
     </div>
   )

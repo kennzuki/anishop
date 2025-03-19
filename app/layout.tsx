@@ -7,6 +7,7 @@ import { Hero } from './components/Hero';
 
 import AniContextProvider from './context/ani-context';
 import { Animal } from './lib/types';
+import SearchContextProvider from './context/search-context-provider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -35,12 +36,15 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <SearchContextProvider>
         <AniContextProvider data={data}>
           <Navbar />
           <Hero />
           {children}
           <Footer />
         </AniContextProvider>
+        </SearchContextProvider>
+       
       </body>
     </html>
   );
