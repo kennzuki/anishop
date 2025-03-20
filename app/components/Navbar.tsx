@@ -5,7 +5,7 @@ export const Navbar = () => {
 const links=[
     {name:'home',path:'/'},
     {name:'dashboard',path:'app/dashboard'},
-    {name:'account',path:'app/accounts'},
+    {name:'account',path:'app/account'},
     { name: 'contact', path: 'app/contact' },
 ]
 

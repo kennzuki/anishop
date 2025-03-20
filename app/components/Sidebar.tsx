@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './Card';
 import{ SearchInput} from './SearchInput';
+import  Buttons  from './Buttons';
 
 export const Sidebar = () => {
   return (
@@ -10,9 +11,7 @@ export const Sidebar = () => {
         <Card />
       </section>
       <section className=''>
-        <button className='bg-black text-white text-3xl font-bold rounded-full px-4 py-2 md:translate-x-40'>
-          +
-        </button>
+       <Buttons actionType='add' />
       </section>
     </div>
   );

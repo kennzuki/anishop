@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useAniContext } from '../app/dashboard/hooks';
+import Buttons  from './Buttons';
 export default function Details() {
 const {selectedAniId} = useAniContext();
 
@@ -24,8 +25,8 @@ const {selectedAniId} = useAniContext();
     </article>
 
     <article className=' flex place-items-center gap-4 [&_button]:py-3 [&_button]:px-6 [&_button]:bg-black [&_button]:text-white [&_button]:rounded-full'>
-      <button className=''>Edit</button>
-      <button className=''>Checkout</button>
+      <Buttons actionType='edit' />
+      <Buttons actionType='delete' />
     </article>
   </section>
   {/* 2 */}
