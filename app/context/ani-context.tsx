@@ -12,6 +12,7 @@ type TAniContext = {
     selectedAni: string | null;
     numberOfAni: number;
     selectedAniId: Animal | undefined;
+    handleAniDelete: (id: string) => void;
     handleClickSelectedId: (id: string) => void;
 }
 
@@ -19,7 +20,7 @@ export const AniContext = createContext < TAniContext | null >( null);
 
 export default function AniContextProvider({data, children }:AniContextProviderProps) {
     
-
+            //state
     const [ani, setAni] = useState(data);
     const [selectedAni, setSelectedAni] = useState<string | null>(null);
 
@@ -27,14 +28,20 @@ export default function AniContextProvider({data, children }:AniContextProviderP
     //derived state
     const selectedAniId = ani.find((ani) => ani.id === selectedAni);
     const numberOfAni = ani.length;
-    const handleClickSelectedId = (id:string) => { 
+    //event handlers
+    
+    const handleAniDelete = (id: string) => {
+       
+        setAni(prev=> prev.filter((ani) => ani.id !== id));
+    }
+    const handleClickSelectedId = (id: string) => { 
         setSelectedAni(id);
     }
  
     
     
     return (
-        <AniContext.Provider value={{ ani,  selectedAni,numberOfAni,selectedAniId,handleClickSelectedId}}>
+        <AniContext.Provider value={{ ani,  selectedAni,numberOfAni,selectedAniId,handleAniDelete,handleClickSelectedId}}>
             {children}
         </AniContext.Provider>
     );
