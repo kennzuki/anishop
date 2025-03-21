@@ -1,5 +1,14 @@
 import { Button } from '@/components/ui/button';
 import { PlusIcon } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { AddForm } from './AddForm';
+
 
 type ButtonProps = {
   actionType: 'add' | 'edit' | 'delete';
@@ -7,21 +16,27 @@ type ButtonProps = {
   children?: React.ReactNode;
 };
 
-export default function Buttons({ actionType,onClick,children }: ButtonProps) {
-  if (actionType === 'add') {
-      return <Button>
-      <PlusIcon/>
-    </Button>;
-  }
-  if (actionType === 'edit') {
-    return <Button variant='secondary'>{children}</Button>;
-  }
+export default function Buttons({ actionType, onClick, children }: ButtonProps) {
+  
   if (actionType === 'delete') {
     return <Button variant='destructive'onClick={onClick}>{children} </Button>;
   }
-  return (
-    <div>
-      <Button>{children}</Button>
-    </div>
-  );
+
+  if (actionType === 'add'|| actionType === 'edit') {
+    return (
+      <Dialog>
+        <DialogTrigger asChild>
+          {
+    actionType === 'add' ? <Button >{children} <PlusIcon size={24} /></Button> : <Button variant='secondary'>{children}</Button>
+          }
+  </DialogTrigger>
+        <DialogContent>
+          <DialogHeader><DialogTitle>{actionType==='add'?'Add new Animal':'Edit new Animal'}</DialogTitle></DialogHeader>
+          <AddForm />
+        </DialogContent>
+      </Dialog>)
+  }
+  
+ 
+ 
 }

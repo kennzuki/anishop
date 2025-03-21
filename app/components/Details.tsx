@@ -23,8 +23,8 @@ export default function Details() {
               <h2 className='text-lg font-bold'>{selectedAniId?.name}</h2>
             </article>
 
-            <article className=' flex place-items-center gap-4 [&_button]:py-3 [&_button]:px-6 [&_button]:bg-black [&_button]:text-white [&_button]:rounded-full'>
-              <Buttons actionType='edit'>Edit</Buttons>
+            <article className=' flex place-items-center gap-4 font-bold '>
+              <Buttons  actionType='edit'>Edit</Buttons>
               <Buttons
                 actionType='delete'
                 onClick={() => handleAniDelete(ani[0].id)}
