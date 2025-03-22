@@ -32,7 +32,7 @@ export default function Buttons({ actionType, onClick, children }: ButtonProps) 
   </DialogTrigger>
         <DialogContent>
           <DialogHeader><DialogTitle>{actionType==='add'?'Add new Animal':'Edit new Animal'}</DialogTitle></DialogHeader>
-          <AddForm />
+          <AddForm actionType={actionType} />
         </DialogContent>
       </Dialog>)
   }
