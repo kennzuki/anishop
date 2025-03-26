@@ -12,7 +12,8 @@ type TAniContext = {
   selectedAni: string | null;
   numberOfAni: number;
   selectedAniId: Animal | undefined;
-  handleAddAnimal: (newAni:Omit<Animal, 'id'>) => void; // (newAni: Animal) => void;
+  handleAddAnimal: (newAni: Omit<Animal, 'id'>) => void;
+  handleEditPet: (aniId: string, newAniData: Omit<Animal, 'id'>) => void;
   handleAniDelete: (id: string) => void;
   handleClickSelectedId: (id: string) => void;
 };
@@ -31,15 +32,27 @@ export default function AniContextProvider({
   const selectedAniId = ani.find((ani) => ani.id === selectedAni);
   const numberOfAni = ani.length;
   //event handlers
-  const handleAddAnimal = (newAni:Omit<Animal, 'id'>) => {
-      setAni((prev) => [...prev, {
+  const handleAddAnimal = (newAni: Omit<Animal, 'id'>) => {
+    setAni((prev) => [...prev, {
       ...newAni,
       id: Math.random().toString()
     }]);
   };
 
+  const handleEditPet = (aniId: string, newAniData: Omit<Animal, 'id'>) => {
+    setAni((prev) => prev.map((ani) => {
+      if (ani.id === aniId) {
+        return {
+         id: ani.id,
+         ...newAniData
+       }
+     }
+   }))
+}
+
   const handleAniDelete = (id: string) => {
     setAni((prev) => prev.filter((ani) => ani.id !== id));
+    setSelectedAni(null);
   };
   const handleClickSelectedId = (id: string) => {
     setSelectedAni(id);
@@ -53,6 +66,7 @@ export default function AniContextProvider({
         numberOfAni,
         selectedAniId,
         handleAddAnimal,
+       handleEditPet,
         handleAniDelete,
         handleClickSelectedId,
       }}

@@ -1,3 +1,4 @@
+'use client'
 import { Button } from '@/components/ui/button';
 import { PlusIcon } from 'lucide-react';
 import {
@@ -8,6 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { AddForm } from './AddForm';
+import { useState } from 'react';
 
 
 type ButtonProps = {
@@ -17,6 +19,8 @@ type ButtonProps = {
 };
 
 export default function Buttons({ actionType, onClick, children }: ButtonProps) {
+
+  const [isFormOpen, setIsFormOpen] = useState(false);
   
   if (actionType === 'delete') {
     return <Button variant='destructive'onClick={onClick}>{children} </Button>;
@@ -24,7 +28,7 @@ export default function Buttons({ actionType, onClick, children }: ButtonProps) 
 
   if (actionType === 'add'|| actionType === 'edit') {
     return (
-      <Dialog>
+      <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
         <DialogTrigger asChild>
           {
     actionType === 'add' ? <Button >{children} <PlusIcon size={24} /></Button> : <Button variant='secondary'>{children}</Button>
@@ -32,7 +36,7 @@ export default function Buttons({ actionType, onClick, children }: ButtonProps) 
   </DialogTrigger>
         <DialogContent>
           <DialogHeader><DialogTitle>{actionType==='add'?'Add new Animal':'Edit new Animal'}</DialogTitle></DialogHeader>
-          <AddForm actionType={actionType} />
+          <AddForm actionType={actionType} onFormSubmission={()=>setIsFormOpen(false)}/>
         </DialogContent>
       </Dialog>)
   }
