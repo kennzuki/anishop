@@ -30,9 +30,19 @@ const pets= [
   ]
 
 export async function main() {
-  for (const u of pets) {
-    await prisma.user.create({ data: u })
+  console.log('Start seeding ...');
+  
+  for (const pet of pets) {
+    const result = await prisma.pet.create({ data: pet })
+    console.log(`result.name} created: ${result}`);    
   }
+  console.log('Seeding finished.');
 }
 
-main()
+main().then(async () => {
+  await prisma.$disconnect()
+}).catch(async (e) => {
+  console.error(e)
+  await prisma.$disconnect()
+  process.exit(1)
+} )
