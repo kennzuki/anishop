@@ -13,10 +13,10 @@ type AddFormProps = {
 
 export const AddForm = ({ actionType,onFormSubmission }: AddFormProps,) => {
     const{handleAddAnimal,selectedAniId,handleEditPet}=useAniContext()
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
+    const formData = new FormData(e.currentTarget);
       const ani = {
       name: formData.get('name') as string,
       OwnerName: formData.get('ownerName') as string,
