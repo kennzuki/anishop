@@ -2,6 +2,7 @@
 
 import { createContext, useState } from 'react';
 import { Animal } from '../lib/types';
+import { addPet } from '../actions';
 
 type AniContextProviderProps = {
   data: Animal[];
@@ -32,11 +33,12 @@ export default function AniContextProvider({
   const selectedAniId = ani.find((ani) => ani.id === selectedAni);
   const numberOfAni = ani.length;
   //event handlers
-  const handleAddAnimal = (newAni: Omit<Animal, 'id'>) => {
-    setAni((prev) => [...prev, {
-      ...newAni,
-      id: Math.random().toString()
-    }]);
+  const handleAddAnimal =async (newAni: Omit<Animal, 'id'>) => {
+    // setAni((prev) => [...prev, {
+    //   ...newAni,
+    //   id: Math.random().toString()
+    // }]);
+    await  addPet(newAni)
   };
 
   const handleEditPet = (aniId: string, newAniData: Omit<Animal, 'id'>) => {
