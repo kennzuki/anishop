@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { useAniContext, useSearchContext } from '../app/dashboard/hooks';
+import { useAniContext, useSearchContext } from '../(app)/dashboard/hooks';
 
 export default function Card() {
   const { ani, handleClickSelectedId } = useAniContext();

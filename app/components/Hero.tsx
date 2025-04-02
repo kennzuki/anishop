@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { useAniContext } from '../app/dashboard/hooks';
+import { useAniContext } from '../(app)/dashboard/hooks';
 export const Hero = () => {
   const{numberOfAni} = useAniContext();
   return (
@@ -15,3 +15,5 @@ export const Hero = () => {
     </div>
   )
 }
+
+

@@ -1,6 +1,6 @@
 'use client';
 
-import { useSearchContext } from '../app/dashboard/hooks';
+import { useSearchContext } from '../(app)/dashboard/hooks';
 
 export const SearchInput = () => {
   const { searchQuery, handleChangeSearchQuery } = useSearchContext();

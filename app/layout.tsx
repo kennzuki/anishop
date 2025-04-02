@@ -4,10 +4,10 @@ import './globals.css';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
-
 import AniContextProvider from './context/ani-context';
 import { Animal } from './lib/types';
 import SearchContextProvider from './context/search-context-provider';
+import prisma from '@/lib/prisma';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -29,22 +29,23 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const response = await fetch('https://bytegrad.com/course-assets/projects/petsoft/api/pets')
-  const data:Animal[] = await response.json()
+  const pets = await prisma.pet.findMany();
+  // console.log(data);
+
   return (
     <html lang='en'>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SearchContextProvider>
-        <AniContextProvider data={data}>
-          <Navbar />
-          <Hero />
-          {children}
-          <Footer />
-        </AniContextProvider>
+          <AniContextProvider data={pets}>
+            <Navbar />
+            <Hero />
+            {children}
+
+            <Footer />
+          </AniContextProvider>
         </SearchContextProvider>
-       
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useAniContext } from '../app/dashboard/hooks';
+import { useAniContext } from '../(app)/dashboard/hooks';
 import Buttons from './Buttons';
 export default function Details() {
   const { ani,handleAniDelete,selectedAniId } = useAniContext();
