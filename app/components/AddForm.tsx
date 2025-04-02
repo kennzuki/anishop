@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { useAniContext } from '../(app)/dashboard/hooks';
+import { addPet } from '../actions';
 
 
 type AddFormProps = {
@@ -11,29 +12,13 @@ type AddFormProps = {
   onFormSubmission:()=>void
 };
 
-export const AddForm = ({ actionType,onFormSubmission }: AddFormProps,) => {
-    const{handleAddAnimal,selectedAniId,handleEditPet}=useAniContext()
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-      const ani = {
-      name: formData.get('name') as string,
-      OwnerName: formData.get('ownerName') as string,
-      imageUrl: formData.get('imageUrl') as string,
-      age: +(formData.get('age') as string),
-      notes: formData.get('notes') as string,
-    }
-    if (actionType === 'add') {
-      handleAddAnimal(ani);
-    } else if(actionType==='edit') {
-     handleEditPet(selectedAniId!.id,ani)
-    }
-    onFormSubmission()
-  };
+export const AddForm = ({ actionType, onFormSubmission }: AddFormProps,) => {
+  
+    const{selectedAniId}=useAniContext()
+  
 
   return (
-    <form onSubmit={handleSubmit} className='spacey4'>
+    <form action={addPet}  className='spacey4'>
       <Label className='font-bold' htmlFor='name'>
         Name
       </Label>

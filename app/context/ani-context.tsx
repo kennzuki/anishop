@@ -22,11 +22,11 @@ type TAniContext = {
 export const AniContext = createContext<TAniContext | null>(null);
 
 export default function AniContextProvider({
-  data,
+  data:ani,
   children,
 }: AniContextProviderProps) {
   //state
-  const [ani, setAni] = useState(data);
+  // const [ani, setAni] = useState(data);
   const [selectedAni, setSelectedAni] = useState<string | null>(null);
 
   //derived state
