@@ -2,9 +2,10 @@
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
+
 import { useAniContext } from '../(app)/dashboard/hooks';
 import { addPet } from '../actions';
+import { AddButton } from './addButton';
 
 
 type AddFormProps = {
@@ -44,9 +45,7 @@ export const AddForm = ({ actionType, onFormSubmission }: AddFormProps,) => {
       </Label>
       <Textarea id='notes' name='notes' required defaultValue={actionType==='edit'?selectedAniId?.notes:''}/>
 
-      <Button className='mt-4' type='submit'>
-        {actionType === 'add' ? 'Add' : 'Edit'}
-      </Button>
+     <AddButton actionType={actionType} />
     </form>
   );
 };
