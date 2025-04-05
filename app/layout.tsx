@@ -5,9 +5,10 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
 import AniContextProvider from './context/ani-context';
-import { Animal } from './lib/types';
+
 import SearchContextProvider from './context/search-context-provider';
 import prisma from '@/lib/prisma';
+import { Toaster } from '@/components/ui/sonner';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -44,6 +45,7 @@ export default async function RootLayout({
             {children}
 
             <Footer />
+            <Toaster position='top-right'/>
           </AniContextProvider>
         </SearchContextProvider>
       </body>

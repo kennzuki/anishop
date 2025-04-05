@@ -3,8 +3,9 @@
 import Image from 'next/image';
 import { useAniContext } from '../(app)/dashboard/hooks';
 import Buttons from './Buttons';
+import { deletePet } from '../actions';
 export default function Details() {
-  const { ani,handleAniDelete,selectedAniId } = useAniContext();
+  const {selectedAniId } = useAniContext();
   
   return (
     <>
@@ -27,7 +28,7 @@ export default function Details() {
               <Buttons  actionType='edit'>Edit</Buttons>
               <Buttons
                 actionType='delete'
-                onClick={() => handleAniDelete(ani[0].id)}
+                onClick={async() => await deletePet(selectedAniId?.id)}
               >Delete</Buttons>
            
             </article>
